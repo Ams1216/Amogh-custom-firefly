@@ -5,11 +5,14 @@
 package frc.robot;
 
 import frc.robot.commands.Autos;
+import frc.robot.commands.IntakeAndIndexCommand;
 import frc.robot.commands.IntakeInCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -24,6 +27,7 @@ public class RobotContainer {
   // Replace with CommandPS4Controller or CommandJoystick if needed
   public final Joystick joystick = new Joystick(0);
   public IntakeSubsystem intake = new IntakeSubsystem();
+  public IndexerSubsystem index = new IndexerSubsystem();
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -34,9 +38,10 @@ public class RobotContainer {
 
   
   private void configureBindings() {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    if (joystick.getRawButtonReleased(1)){new IntakeInCommand(intake);}
-  
+    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`4
+    JoystickButton intakeButton = new JoystickButton(joystick, 1);
+    intakeButton.whileTrue(new IntakeAndIndexCommand(intake,index));
+   
   }
  
 

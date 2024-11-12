@@ -40,4 +40,10 @@ public static final class Intake {  // Sets the speed of the motors
   public static final double kIntakeSpeed = .90;
   public static final double kHopperSpeed = .75;
 }
+public static final class Indexer {
+  public static final int preloaderBeamBreak = 9;
+  public static final int feedBeamBreak = 8;
+  public static final double preloadeMotorSpeed = 1.0;
+  public static final double feedMotorSpeed = -0.75;
+}
 }

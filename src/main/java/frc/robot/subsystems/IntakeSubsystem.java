@@ -16,20 +16,24 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class IntakeSubsystem extends SubsystemBase  {
   public final TalonSRX motor = new TalonSRX(Constants.MotorIDs.INTAKE_MOTOR);
+  public final TalonSRX hopperMotor = new TalonSRX(Constants.MotorIDs.HOPPER_MOTOR);
   public final DoubleSolenoid piston = new DoubleSolenoid(Constants.Solenoids.COMPRESSOR_MODULE_ID,PneumaticsModuleType.REVPH,Constants.Solenoids.INTAKE_IN_SOLENOID,Constants.Solenoids.INTAKE_OUT_SOLENOID);
   
   public void spinIn(double speed){
     motor.set(TalonSRXControlMode.PercentOutput,speed);
+    hopperMotor.set(TalonSRXControlMode.PercentOutput, speed);
   }
   public void spinOut(){
     motor.set(TalonSRXControlMode.PercentOutput, 0);
+    hopperMotor.set(TalonSRXControlMode.PercentOutput, 0);
   }
   public void armUp(){
-    piston.set(Value.kForward);
-  }
-  public void armDown(){
     piston.set(Value.kReverse);
   }
+  public void armDown(){
+    piston.set(Value.kForward);
+  }
+
   
   /** Creates a new IntakeSubsystem. */
   public IntakeSubsystem() {}
