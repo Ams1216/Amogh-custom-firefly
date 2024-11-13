@@ -40,7 +40,7 @@ public class RobotContainer {
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`4
     JoystickButton intakeButton = new JoystickButton(joystick, 1);
-    intakeButton.whileTrue(new IntakeAndIndexCommand(intake,index));
+    intakeButton.whileTrue(new OutakeCommand(intake,index));
    
   }
  

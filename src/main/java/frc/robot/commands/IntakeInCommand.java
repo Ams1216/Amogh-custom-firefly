@@ -26,7 +26,7 @@ public class IntakeInCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    intake.spinIn(Constants.Intake.kIntakeSpeed);
+    intake.spinIn(-Constants.Intake.kIntakeSpeed);
     intake.armDown();
    
     
